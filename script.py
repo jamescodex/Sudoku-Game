@@ -249,3 +249,52 @@ puzzle_5 = [[0, 4, 2, 0], [2, 0, 0, 0], [0, 0, 0, 3],
             [0, 3, 1, 0]]  # Solution: [[3,4,2,1],[2,1,3,4],[1,2,4,3],[4,3,1,2]]
 
 all_puzzles = [puzzle_1, puzzle_2, puzzle_3, puzzle_4, puzzle_5]
+
+
+# ---------------------------------------------   Start the game   ---------------------------------------------------------- #
+
+while True:
+    turtle.reset()  # Start with a clean canvas in case user wants to replay
+    setWorld()
+    game_won = False
+    turtle.pd()
+    drawGrid()
+
+    # --------- Draw the lines in bold, across and down -------- #
+    turtle.pu()
+    turtle.goto(-75, 0)
+    turtle.pd()
+    turtle.fd(150)
+    turtle.pu()
+    turtle.goto(0, 75)
+    turtle.lt(270)
+    turtle.pd()
+    turtle.fd(150)
+    turtle.pu()
+
+    # -------- Make the turtle go to the left ------------- #
+    turtle.goto(-75, -75)
+
+    turtle.pensize(2)
+    make_box()
+    turtle.goto(-95, 45)  # Start by going to the left top of the grid (Labeling starts with 'A', 'B'... etc)
+    labelGrid()
+    game_puzzle = all_puzzles[random.randint(0, 4)]  # Pick a random puzzle to start the game
+    populatePuzzle(game_puzzle)
+
+    while game_won != True:
+        take_input(game_puzzle)
+
+        if isboardfilled(game_puzzle):
+            confirm_sol = turtle.textinput('', 'Are you sure you want to submit this solution? (y/n)')
+            if confirm_sol in ['yes', 'y', 'YES']:
+                if row_check(game_puzzle) == col_check(game_puzzle) == box_check(game_puzzle) == True:
+                    turtle.textinput('', 'Congratulations you have won! (Press any key to continue)')
+                    game_won = True
+                else:
+                    turtle.textinput('', "Your solution is incorrect. Keep trying! (Press any key to continue)")
+
+    if not replay():
+        break
+
+turtle.done()
