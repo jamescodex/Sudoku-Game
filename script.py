@@ -3,6 +3,7 @@ import random
 
 
 # --------------- Made this function to set our coordinates and environment whenever we play ------------- #
+#
 def setWorld():
     turtle.setworldcoordinates(-100, -100, 100, 100)
     turtle.hideturtle()
@@ -30,7 +31,7 @@ def drawSquare():
         turtle.lt(90)
 
 
-# ------------- A function to keep drawing squares and moving forward until it reaches a specific x-coordinate --------#
+# -------- A function to keep drawing squares and moving forward until it reaches a specific x-coordinate --------#
 def move_turtle():
     turtle.pd()
     while not (turtle.xcor() >= 75):
