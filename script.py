@@ -131,6 +131,7 @@ def populatePuzzle(puzzle):
     '''
     Takes in a puzzle (which is a nested list)
     Returns the grid with the initial numbers inside
+    Note: This function only populates the puzzle. Other functionalities are included in other parts of the code
     '''
 
     col_increment_size = [-60, -30, 10, 50]  # Starts at A1 (-60,50), A2 (-30,50), A3 (10,50) .... D4 (50,-60)
