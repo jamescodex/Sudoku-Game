@@ -160,7 +160,7 @@ def row_check(puzzle):
         return True
 
     else:
-        return 'Keep trying!'
+        return 'Incorrect, try again!'
 
 
 def col_check(puzzle):
